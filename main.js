@@ -25,11 +25,15 @@ fs.readdir("./commands/", (err, files) => {
         return console.log("[LOGS] Couldn't Find Commands!");
     }
 });
+
 let greetings = ["gm", "good morning", "morning", "morning guys", "morning"];
 let greetings1 = ["hi", "hey", "hello", "hell"];
 let greetings2 = ["nite", "night", "good night", "nighty", "sweet dreams"];
 let greetings3 = ["afternoon"];
 let greetings4 = ["evening"];
+let greetings5 = ["awesome", "good job", "naisu", "cool"];
+let greetings6 = ["scary", "ghost", "dark", "horror"];
+
 bot.on("message", async (message) => {
     if (message.author.bot) return;
     let messageStr = message.content;
@@ -48,11 +52,21 @@ bot.on("message", async (message) => {
     }
 
     if (greetings3.includes(messageStr.toLowerCase())) {
-        message.channel.send(`good afternoon there ${message.author.username}!`);
+        message.channel.send(
+            `good afternoon there ${message.author.username}!`
+        );
     }
 
     if (greetings4.includes(messageStr.toLowerCase())) {
         message.channel.send(`good evening ${message.author.username}`);
+    }
+
+    if (greetings5.includes(messageStr.toLowerCase())) {
+        message.channel.send(`No you ${message.author.username} hihihi`);
+    }
+
+    if (greetings6.includes(messageStr.toLowerCase())) {
+        message.channel.send(`I love it ~`);
     }
 
     let prefix = botsettings.prefix;
