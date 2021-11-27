@@ -19,23 +19,53 @@ const listener = app.listen(3000, function () {
 
 let jsfile;
 fs.readdir("./commands/", (err, files) => {
-    if (err) console.log(err)
-    jsfile = files.filter(f => f.split(".").pop() === "js")
+    if (err) console.log(err);
+    jsfile = files.filter((f) => f.split(".").pop() === "js");
     if (jsfile.length <= 0) {
-      return console.log("[LOGS] Couldn't Find Commands!");
+        return console.log("[LOGS] Couldn't Find Commands!");
     }
 });
-
+let greetings = ["gm", "good morning", "morning", "morning guys", "morning"];
+let greetings1 = ["hi", "hey", "hello", "hell"];
+let greetings2 = ["nite", "night", "good night", "nighty", "sweet dreams"];
+let greetings3 = ["afternoon"];
+let greetings4 = ["evening"];
 bot.on("message", async (message) => {
     if (message.author.bot) return;
+    let messageStr = message.content;
+
+    //Check greetings
+    if (greetings.includes(messageStr.toLowerCase())) {
+        message.channel.send(`Morning ${message.author.username}~ hehehe`);
+    }
+
+    if (greetings1.includes(messageStr.toLowerCase())) {
+        message.channel.send(`hell  o ${message.author.username}~ hihihi`);
+    }
+
+    if (greetings2.includes(messageStr.toLowerCase())) {
+        message.channel.send(`nite nite my ${message.author.username}`);
+    }
+
+    if (greetings3.includes(messageStr.toLowerCase())) {
+        message.channel.send(`good afternoon there ${message.author.username}!`);
+    }
+
+    if (greetings4.includes(messageStr.toLowerCase())) {
+        message.channel.send(`good evening ${message.author.username}`);
+    }
 
     let prefix = botsettings.prefix;
-    let messageStr = message.content;
-    let messageArr = messageStr.split(" ")
-    let commandName = messageArr[0].substring(1)
-    let messageArg = messageArr[1]
-    if(messageStr[0] == prefix && jsfile.includes(commandName+".js")){
-        require(`./commands/${commandName}`).run(bot, message, messageArg)
+
+    let messageArr = messageStr.split(" ");
+    let commandName = messageArr[0].substring(1);
+    let messageArg = messageArr[1];
+    if (messageStr[0] == prefix && jsfile.includes(commandName + ".js")) {
+        await require(`./commands/${commandName}`).run(
+            bot,
+            message,
+            messageArg
+        );
     }
 });
 
