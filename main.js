@@ -26,8 +26,8 @@ fs.readdir("./commands/", (err, files) => {
     }
 });
 
-bot.on("messageCreate", async (message) => {
-    if (message.author.bot || message.channel.type === "dm") return;
+bot.on("message", async (message) => {
+    if (message.author.bot) return;
 
     let prefix = botsettings.prefix;
     let messageStr = message.content;
