@@ -40,20 +40,20 @@ bot.on("message", async (message) => {
 
     //Check greetings
     if (greetings.includes(messageStr.toLowerCase())) {
-        message.channel.send(`Morning ${message.author.username}~ hehehe`);
+        message.channel.send(`Morning ${message.author.username} :)`);
     }
 
     if (greetings1.includes(messageStr.toLowerCase())) {
-        message.channel.send(`hell  o ${message.author.username}~ hihihi`);
+        message.channel.send(`hell  o ${message.author.username} :)`);
     }
 
     if (greetings2.includes(messageStr.toLowerCase())) {
-        message.channel.send(`nite nite my ${message.author.username}`);
+        message.channel.send(`good night ${message.author.username} :)`);
     }
 
     if (greetings3.includes(messageStr.toLowerCase())) {
         message.channel.send(
-            `good afternoon there ${message.author.username}!`
+            `good afternoon ${message.author.username}!`
         );
     }
 
@@ -62,7 +62,7 @@ bot.on("message", async (message) => {
     }
 
     if (greetings5.includes(messageStr.toLowerCase())) {
-        message.channel.send(`No you ${message.author.username} hihihi`);
+        message.channel.send(`No you ${message.author.username}~`);
     }
 
     if (greetings6.includes(messageStr.toLowerCase())) {
