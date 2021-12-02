@@ -26,19 +26,21 @@ fs.readdir("./commands/", (err, files) => {
     }
 });
 
-let greetings = ["gm", "good morning", "morning", "morning guys", "morning"];
-let greetings1 = ["hi", "hey", "hello", "hell"];
-let greetings2 = ["nite", "night", "good night", "nighty", "sweet dreams"];
-let greetings3 = ["afternoon"];
-let greetings4 = ["evening"];
-let greetings5 = ["awesome", "good job", "naisu", "cool"];
-let greetings6 = ["scary", "ghost", "dark", "horror"];
+function checkGreetings(messageStr, message) {
+    let greetings = [
+        "gm",
+        "good morning",
+        "morning",
+        "morning guys",
+        "morning",
+    ];
+    let greetings1 = ["hi", "hey", "hello", "hell"];
+    let greetings2 = ["nite", "night", "good night", "nighty", "sweet dreams"];
+    let greetings3 = ["afternoon"];
+    let greetings4 = ["evening"];
+    let greetings5 = ["awesome", "good job", "naisu", "cool"];
+    let greetings6 = ["scary", "ghost", "dark", "horror"];
 
-bot.on("message", async (message) => {
-    if (message.author.bot) return;
-    let messageStr = message.content;
-
-    //Check greetings
     if (greetings.includes(messageStr.toLowerCase())) {
         message.channel.send(`Morning ${message.author.username} :)`);
     }
@@ -52,9 +54,7 @@ bot.on("message", async (message) => {
     }
 
     if (greetings3.includes(messageStr.toLowerCase())) {
-        message.channel.send(
-            `good afternoon ${message.author.username}!`
-        );
+        message.channel.send(`good afternoon ${message.author.username}!`);
     }
 
     if (greetings4.includes(messageStr.toLowerCase())) {
@@ -67,6 +67,15 @@ bot.on("message", async (message) => {
 
     if (greetings6.includes(messageStr.toLowerCase())) {
         message.channel.send(`I love it ~`);
+    }
+}
+
+bot.on("message", async (message) => {
+    if (message.author.bot) return;
+    let messageStr = message.content;
+
+    if (botsettings.greetings == true) {
+        checkGreetings(messageStr, message);
     }
 
     let prefix = botsettings.prefix;
